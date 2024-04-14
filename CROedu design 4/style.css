@@ -2,11 +2,11 @@
   font-size: 35px;
   margin: none;
 }
-body{
+body {
   margin: 0;
 }
 .Home {
-  background: linear-gradient(#324B4C 2%, 30%, #FBF9F2);
+  background: linear-gradient(#324b4c 2%, 35%, #fbf9f2);
 }
 
 .navbar {
@@ -17,34 +17,34 @@ body{
   color: black; /* 글자색을 흰색으로 지정합니다. */
   padding: 7px 30px; /* 내부 여백을 상하 10px, 좌우 20px로 지정합니다. */
   padding-top: 0;
+  border-bottom: 5px solid #324b4c;
 }
 .navbar a::after {
-	position: absolute;
-	top: 100%;
-	left: 0;
-	width: 100%;
-	height: 4px;
-	background: rgba(247, 245, 245, 0.1);
-	content: '';
-	opacity: 0;
-	-webkit-transition: opacity 0.3s, -webkit-transform 0.3s;
-	-moz-transition: opacity 0.3s, -moz-transform 0.3s;
-	transition: opacity 0.3s, transform 0.3s;
-	-webkit-transform: translateY(10px);
-	-moz-transform: translateY(10px);
-	transform: translateY(10px);
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: rgba(247, 245, 245, 0.1);
+  content: "";
+  opacity: 0;
+  -webkit-transition: opacity 0.3s, -webkit-transform 0.3s;
+  -moz-transition: opacity 0.3s, -moz-transform 0.3s;
+  transition: opacity 0.3s, transform 0.3s;
+  -webkit-transform: translateY(10px);
+  -moz-transform: translateY(10px);
+  transform: translateY(10px);
 }
 
 .navbar a:hover::after,
 .navbar a:focus::after {
-	opacity: 1;
-	-webkit-transform: translateY(0px);
-	-moz-transform: translateY(0px);
-	transform: translateY(0px);
+  opacity: 1;
+  -webkit-transform: translateY(0px);
+  -moz-transform: translateY(0px);
+  transform: translateY(0px);
 }
 
-
-.login  {
+.login {
   border: 1px solid white;
   padding: 15px;
   margin-top: 15px;
@@ -57,16 +57,20 @@ body{
 }
 
 .login:hover {
-  background-color: #FBF9F2;
+  background-color: #fbf9f2;
   text-decoration: none;
   color: black;
-  border: 1px solid #FBF9F2;
+  border: 1px solid #fbf9f2;
 }
 .image {
   max-width: 80%;
   height: auto;
 }
-
+/*#grass {
+  background-size: cover;
+  background-repeat: none;
+  background-image: url("grass.jpg");
+}*/
 
 .brand_icon a img {
   width: 150px; /* 브랜드 아이콘의 너비를 40px로 지정합니다. */
@@ -100,7 +104,6 @@ body{
   font-size: 20px;
 }
 
-
 .brand_icon img {
   width: 200px;
   height: auto;
@@ -119,7 +122,7 @@ body{
 
 @keyframes title_slide {
   from {
-    color: #C6BF9F;
+    color: #c6bf9f;
 
     to {
       color: white;
@@ -131,10 +134,9 @@ body{
   font-size: 13px;
 }
 
-
 #video_1 {
   padding-top: 60px;
-  border-bottom : 1px;
+  border-bottom: 1px;
 }
 #본문 {
   text-align: center;
@@ -143,17 +145,20 @@ body{
   font-weight: 200;
 }
 #본문 span {
-    font-family: "Gothic A1", sans-serif;
-    font-weight: 400;
-    font-style: normal; 
+  font-family: "Song Myung", serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 70px;
+  padding-top: 20px;
 }
 .C p {
-    font-family: "Gothic A1", sans-serif;
-    font-weight: 400;
-    font-style: normal;
-    font-size: 40px;
+  font-family: "Song Myung", serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 70px;
+  padding-top: 20px;
+  margin-bottom: 0;
 }
-
 
 #본문_4 {
   text-align: center;
@@ -165,13 +170,13 @@ body{
 #본문_4 p {
   padding-bottom: 70px;
 }
-.J_btn a{
+.J_btn a {
   text-decoration: none;
-  color: #324B4C;
+  color: #324b4c;
 }
 .J_btn button {
-  background-color: #C6BF9F;
-  color: #324B4C;
+  background-color: #c6bf9f;
+  color: #324b4c;
   font-weight: 500;
   margin-top: 30px;
   border: none;
@@ -189,13 +194,20 @@ body{
   color: rgb(171, 170, 170);
 }
 
+.바로가기_1 span {
+  font-family: "Nanum Gothic Coding", monospace;
+  font-weight: 400;
+  font-style: normal;
+  color: rgb(155, 153, 153);
+  font-size: 14px;
+}
 
 #본문_5 p {
   font-size: 20px;
 }
 
 footer {
-  background-color: #324B4C;
+  background-color: #324b4c;
   color: rgb(112, 110, 110);
   font-size: 30px;
   font-weight: 500px;
@@ -222,31 +234,31 @@ footer {
   border: 1px solid white;
   width: 200px;
 }
-.course_list:hover{
+.course_list:hover {
   background-color: black;
 }
 .slider {
-    overflow: hidden;
-    position: relative;
-    width: 100%;
-    height: auto;
-    box-sizing: border-box;
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+  height: auto;
+  box-sizing: border-box;
 }
-.imagebox{
+.imagebox {
   width: 3000px;
   height: 100%;
   display: flex;
   flex-wrap: nowrap;
   animation: bannermove 20s linear infinite;
 }
-.imagebox > div{
+.imagebox > div {
   margin: 0px -1px 0px 0px;
 }
-@keyframes bannermove{
-  0%{
-    transform: translate(0,0)
+@keyframes bannermove {
+  0% {
+    transform: translate(0, 0);
   }
-  100%{
-    transform: translate(-50%,0)
+  100% {
+    transform: translate(-50%, 0);
   }
 }

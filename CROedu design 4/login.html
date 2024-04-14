@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="login.css" />
     <title>login</title>
   </head>
   <body bgcolor="#324B4C" style="color: white">
@@ -17,10 +18,13 @@
     <button  type="button" id="curriculum_button">
       curriculum
     </button>
-    </div>--><link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Nanum+Gothic+Coding&family=
-Song+Myung&display=swap" rel="stylesheet">
+    </div>--><link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Nanum+Gothic+Coding&family=
+Song+Myung&display=swap"
+      rel="stylesheet"
+    />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -35,18 +39,147 @@ Song+Myung&display=swap" rel="stylesheet">
     />
     <nav class="navbar">
       <div class="brand_icon">
-        <a href="index.html"><img src="IMG/LOGO-2(비율편집).png" alt="logo" /></a>
+        <a href="index.html"
+          ><img src="IMG/LOGO-2(비율편집).png" alt="logo"
+        /></a>
       </div>
       <ul class="menu">
         <li><a href="course.html" target="_blank">강의</a></li>
         <li><a href="curriculum.html" target="_blank">커리큘럼</a></li>
         <li><a href="">유튜브</a></li>
       </ul>
-      <a href="login.html" class="login">
-        로그인
-      </a>
+      <a href="login.html" class="login"> 로그인 </a>
     </nav>
-    <input type="text">
-    <script src="app.js"></script>
+    <div class="container">
+      <div class="signUp-container">
+        <h2>회원가입</h2>
+        <form>
+          <div><input type="email" placeholder="email" id="signUpEmail" /></div>
+          <div>
+            <input type="password" placeholder="password" id="signUpPassword" />
+          </div>
+          <button type="submit" id="signUpButton">회원가입</button>
+        </form>
+      </div>
+      <div class="signIn-container">
+        <h2>로그인</h2>
+        <form>
+          <div><input type="email" placeholder="email" id="signInEmail" /></div>
+          <div>
+            <input type="password" placeholder="password" id="signInPassword" />
+          </div>
+          <button type="submit" id="signInButton">로그인</button>
+        </form>
+      </div>
+    </div>
+    <button id="goggleLogin">구글 아이디로 로그인</button>
+    <script type="module">
+      // Import the functions you need from the SDKs you need
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/10.11.0/firebase-app.js";
+      import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.11.0/firebase-analytics.js";
+      import {
+        signInWithPopup,
+        GoogleAuthProvider,
+      } from "https://www.gstatic.com/firebasejs/10.11.0/firebase-auth.js";
+      // TODO: Add SDKs for Firebase products that you want to use
+      // https://firebase.google.com/docs/web/setup#available-libraries
+
+      // Your web app's Firebase configuration
+      // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+      const firebaseConfig = {
+        apiKey: "AIzaSyA1ozzXXpH0YzZMJBf7n_wHq4UKREQTqXE",
+        authDomain: "croproject-c5719.firebaseapp.com",
+        projectId: "croproject-c5719",
+        storageBucket: "croproject-c5719.appspot.com",
+        messagingSenderId: "207638499788",
+        appId: "1:207638499788:web:a8937bf636a0e7a5794d69",
+        measurementId: "G-K9VR2SWL83",
+      };
+
+      // Initialize Firebase
+      const app = initializeApp(firebaseConfig);
+      const analytics = getAnalytics(app);
+      const auth = getAuth();
+      import {
+        getAuth,
+        createUserWithEmailAndPassword,
+        signInWithEmailAndPassword,
+      } from "https://www.gstatic.com/firebasejs/10.11.0/firebase-auth.js";
+
+      document //회원가입 기능
+        .getElementById("signUpButton")
+        .addEventListener("click", (event) => {
+          event.preventDefault();
+          const signUpEmail = document.getElementById("signUpEmail").value;
+          const signUpPassword =
+            document.getElementById("signUpPassword").value;
+          createUserWithEmailAndPassword(auth, signUpEmail, signUpPassword)
+            .then((userCredential) => {
+              // Signed in
+              document.getElementById("signUpEmail").value = "";
+              document.getElementById("signUpPassword").value = "";
+              console.log(`회원가입 완료`, userCredential);
+              const user = userCredential.user;
+              // ...
+            })
+            .catch((error) => {
+              console.log(`회원가입 실패`);
+              const errorCode = error.code;
+              const errorMessage = error.message;
+              // ..
+            });
+        });
+
+      document // 로그인 기능
+        .getElementById("signInButton")
+        .addEventListener("click", (event) => {
+          event.preventDefault();
+          const signInEmail = document.getElementById("signInEmail").value;
+          const signInPassword =
+            document.getElementById("signInPassword").value;
+          signInWithEmailAndPassword(auth, signInEmail, signInPassword)
+            .then((userCredential) => {
+              // Signed in
+              document.getElementById("signInEmail").value = "";
+              document.getElementById("signInPassword").value = "";
+              console.log(userCredential);
+              const user = userCredential.user;
+              // ...
+            })
+            .catch((error) => {
+              console.log(`로그인 실패`);
+              const errorCode = error.code;
+              const errorMessage = error.message;
+            });
+        });
+      //구글 로그인
+      const provider = new GoogleAuthProvider();
+      document.getElementById("goggleLogin").addEventListener("click", () => {
+        signInWithPopup(auth, provider)
+          .then((result) => {
+            // This gives you a Google Access Token. You can use it to access the Google API.
+            const credential = GoogleAuthProvider.credentialFromResult(result);
+            const token = credential.accessToken;
+            // The signed-in user info.
+            const user = result.user;
+            // IdP data available using getAdditionalUserInfo(result)
+            // ...
+            console.log(result);
+          })
+          .catch((error) => {
+            // Handle Errors here.
+            const errorCode = error.code;
+            const errorMessage = error.message;
+            // The email of the user's account used.
+            const email = error.customData.email;
+            // The AuthCredential type that was used.
+            const credential = GoogleAuthProvider.credentialFromError(error);
+            // ...
+            console.log(error);
+          });
+      });
+    </script>
+    <script src="login.js"></script>
+    <script src="firebase.js"></script>
   </body>
 </html>
